@@ -1,0 +1,59 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "Calibri"
+}
+header{
+    background: url(mathematics.png);
+    background-position: center center;
+    background-size:contain;
+    background-blend-mode:color-burn;
+    background-color:darkslateblue;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+img{
+    width: auto;
+    height: 125px;
+}
+h1{
+    text-transform: uppercase;
+    color: aliceblue;
+    font-size: 2.5rem;
+}
+section{
+    margin: 10px 0;
+    display: flex;
+    font-weight: 700;
+    width: 100%;
+}
+.task, .ans{
+    width: 50%;
+    padding: 20px;
+}
+.task{
+    text-align: right;
+    background: #ebebeb;
+}
+.ans{
+    text-align: left;
+    background: #c9c9c9;
+}
+input{
+    width: 40px;
+    border: none;
+    border-bottom: 1px solid #828282;
+    background: none;
+    appearance: textfield;
+    text-align: center;
+}
+button{
+    color: aliceblue;
+    background-color: blueviolet;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}

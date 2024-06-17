@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Matematyka</title>
+</head>
+
+<body>
+    <header><!---https://favpng.com/-->
+        <img src="matematyka-300x300.png" alt="matematyka" />
+        <h1>Matematyka</h1>
+    </header>
+    <section id="przedzial">
+        <div class="task">
+            <form>
+                <span>Podaj przedział: (</span><input type="number" id="p1" /><span>,</span><input type="number" id="p2" /><span>)</span>
+                <button type="button" onclick="licz()">Licz</button>
+            </form>
+        </div>
+        <div id="wynik1" class="ans">
+        </div>
+    </section>
+    <section id="funkcja">
+        <div class="task">
+            <form>
+                <span>Funkcja y=Ax+B; A=</span><input type="number" id="f1" /><span> B=</span><input type="number" id="f2" />
+                <button type="button" onclick="funkcja()">Sprawdź</button>
+            </form>
+        </div>
+        <div id="wynik2" class="ans">
+        </div>
+    </section>
+    <section id="rownanie">
+        <div class="task">
+            <form>
+                <span>równanie y=Ax<sup>2</sup>+B+C; A=</span><input type="number" id="r1" /><span> B=</span><input type="number" id="r2" /><span> C=</span><input type="number" id="r3" />
+                <button type="button" onclick="rownanie()">Sprawdź</button>
+            </form>
+        </div>
+        <div id="wynik3" class="ans">
+        </div>
+    </section>
+</body>
+
+</html>
+<script>
+    function licz() {
+        let p1 = parseFloat(document.getElementById("p1").value);
+        let p2 = parseFloat(document.getElementById("p2").value);
+        let wynik1 = document.getElementById("wynik1");
+
+        if (isNaN(p1) || isNaN(p2)) {
+            wynik1.innerHTML = "Podaj wartości!";
+        } else {
+            if (p1 < p2 && p1 + 1 != p2) {
+                wynik1.innerHTML = "Liczby całkowite w przedziale: ("
+                for (p1++; p1 <= p2; p1++) {
+                    if (p1 == p2 - 1) {
+                        wynik1.innerHTML += p1;
+                        break;
+                    }
+                    wynik1.innerHTML += (p1 + ", ");
+                }
+                wynik1.innerHTML += ")";
+            } else {
+                wynik1.innerHTML = "Przedział pusty";
+            }
+        }
+    }
+
+
+    function funkcja() {
+        let f1 = parseFloat(document.getElementById("f1").value);
+        let f2 = parseFloat(document.getElementById("f2").value);
+
+        let wynik2 = document.getElementById("wynik2");
+        if (isNaN(f1) || isNaN(f2)) {
+            wynik2.innerHTML = "Podaj wartości!";
+        } else {
+            if (f1 == 0) {
+                wynik2.innerHTML = "Funkcja y=" + f2 + " jest stała";
+            } else if (f1 < 0) {
+                wynik2.innerHTML = "Funkcja y=" + f1 + "x";
+                if (f2 > 0) {
+                    wynik2.innerHTML += "+" + f2;
+                } else if (f2 < 0) {
+                    wynik2.innerHTML += f2;
+                }
+                wynik2.innerHTML += " jest malejąca";
+            } else {
+                wynik2.innerHTML = "Funkcja y=" + f1 + "x";
+                if (f2 > 0) {
+                    wynik2.innerHTML += "+" + f2;
+                } else if (f2 < 0) {
+                    wynik2.innerHTML += f2;
+                }
+                wynik2.innerHTML += " jest rosnąca";
+            }
+        }
+    }
+
+
+    function rownanie() {
+        let r1 =  parseFloat(document.getElementById("r1").value);
+        let r2 =  parseFloat(document.getElementById("r2").value);
+        let r3 =  parseFloat(document.getElementById("r3").value);
+        let wynik3 = document.getElementById("wynik3");
+        if (isNaN(r1) || isNaN(r2) || isNaN(r3)) {
+            wynik3.innerHTML = "Podaj wartości!";
+        } else {
+        let delta = r2 * r2 - (4 * r1 * r3);
+
+        if (delta == 0) {
+            wynik3.innerHTML = "Funkcja ma jedno rozwiazanie: x<sub>0</sub>=" + (-r2 / (2 * r1)).toFixed(2);
+        } else if (delta < 0) {
+            wynik3.innerHTML = "Funkcja nie ma rozwiazań";
+        } else {
+            wynik3.innerHTML = "Funkcja ma dwa rozwiazanie: x<sub>1</sub>=" + ((-r2 - Math.sqrt(delta)) / (2 * r1)).toFixed(2) + " x<sub>2</sub>=" + ((-r2 + Math.sqrt(delta)) / (2 * r1)).toFixed(2);
+        }
+        }
+    }
+
+</script>
